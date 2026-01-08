@@ -519,6 +519,8 @@ import psycopg2
 import os
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
+from psycopg2.extras import RealDictCursor
+
 
 # =========================
 # CONFIGURACIÓN
@@ -526,13 +528,18 @@ from werkzeug.security import generate_password_hash, check_password_hash
 app = Flask(__name__)
 app.secret_key = "CLAVE_SUPER_SECRETA"  # Cámbiala
 # URL de PostgreSQL desde Render o tu entorno
-DATABASE_URL = os.environ.get("postgresql://asistencia_user:Y2AGMrNqjYkbpbWQTy59L7ipN5VJRRuR@dpg-d5g0m095pdvs73cbllcg-a/asistencia_09j8")
+def conectar_db():
+    DATABASE_URL1 = os.environ.get("postgresql://asistencia_user:Y2AGMrNqjYkbpbWQTy59L7ipN5VJRRuR@dpg-d5g0m095pdvs73cbllcg-a/asistencia_09j8")
+    DATABASE_URL = os.environ.get(DATABASE_URL1)
+    if not DATABASE_URL:
+        raise Exception("❌ La variable de entorno DATABASE_URL no está definida")
+    return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
 
 # =========================
 # CONEXIÓN BD
 # =========================
-def conectar_db():
-    return psycopg2.connect(DATABASE_URL)
+# def conectar_db():
+#     return psycopg2.connect(DATABASE_URL)
 
 # =========================
 # CREAR TABLAS
