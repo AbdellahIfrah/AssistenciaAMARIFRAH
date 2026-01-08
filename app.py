@@ -461,6 +461,29 @@ def admin():
     conn.close()
     return render_template("admin.html", mensaje=mensaje, trabajadores=trabajadores)
 
+def crear_admin():
+    conn = conectar_db()
+    cur = conn.cursor()
+
+    # comprobar si ya existe admin
+    cur.execute("SELECT id FROM usuarios WHERE rol='admin'")
+    existe = cur.fetchone()
+
+    if not existe:
+        cur.execute("""
+            INSERT INTO usuarios (usuario, password, nombre, cargo, rol)
+            VALUES (?, ?, ?, ?, ?)
+        """, (
+            "admin",
+            generate_password_hash("admin123"),
+            "Administrador",
+            "ADMIN",
+            "admin"
+        ))
+        conn.commit()
+        print("✅ Usuario ADMIN creado automáticamente")
+
+    conn.close()
 
 
 # =========================
@@ -479,4 +502,5 @@ def logout():
 #     app.run(host="0.0.0.0", port=5000, debug=True)
 if __name__ == "__main__":
     crear_tablas()
+    crear_admin()
     app.run(host="0.0.0.0", port=5000)
