@@ -12,7 +12,7 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
 
-    <style>
+    <!-- <style>
         body { font-family: 'Inter', sans-serif; background-color: #f5f6fa; }
 
         .btn-primary { background-color: #3742fa; border: none; }
@@ -41,8 +41,102 @@
 
         .header img { height: 40px; }
         .header h1 { font-size: 1.5rem; margin: 0; }
-    </style>
+    </style> -->
 
+
+    <style>
+        /* Fuente principal */
+        body { 
+            font-family: 'Inter', sans-serif; 
+            background: linear-gradient(135deg, #1e1e2f, #2f2f3f); /* gradiente oscuro */
+            color: #f5f6fa; /* texto claro */
+            min-height: 100vh;
+            margin: 0;
+            padding-bottom: 60px; /* espacio para footer */
+        }
+    
+        /* Botones */
+        .btn-primary { 
+            background-color: #3742fa; 
+            border: none; 
+            color: white;
+        }
+        .btn-primary:hover { 
+            background-color: #273cfa; 
+        }
+    
+        /* Tarjetas */
+        .card { 
+            border-radius: 12px; 
+            box-shadow: 0 6px 20px rgba(0,0,0,0.4); /* sombra más visible */
+            background-color: rgba(255, 255, 255, 0.05); /* transparente */
+            color: #f5f6fa;
+        }
+    
+        /* Header */
+        .header {
+            background: linear-gradient(90deg, #3742fa, #535bf2);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+        }
+        .header img { height: 40px; }
+        .header h1 { font-size: 1.5rem; margin: 0; }
+    
+        /* Footer */
+        footer {
+            background-color: #2f3640;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+            box-shadow: 0 -2px 6px rgba(0,0,0,0.3);
+        }
+    
+        /* Contenedor principal */
+        .container {
+            padding-top: 20px;
+        }
+    
+        /* Inputs y formularios */
+        input, select, textarea {
+            border-radius: 8px;
+            border: 1px solid #555;
+            background-color: rgba(255,255,255,0.1);
+            color: #f5f6fa;
+            padding: 10px;
+            width: 100%;
+        }
+    
+        input::placeholder {
+            color: #ccc;
+        }
+    
+        /* Tablas */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            color: #f5f6fa;
+        }
+        table th, table td {
+            padding: 12px;
+            border-bottom: 1px solid #444;
+        }
+        table thead {
+            background-color: #2f3640;
+            color: #f5f6fa;
+        }
+        table tr:hover {
+            background-color: rgba(255,255,255,0.05);
+        }
+    
+    </style>
+    
     {% block head %}{% endblock %}
 </head>
 <body>
@@ -50,7 +144,7 @@
 <!-- Header -->
 <div class="header">
     <img src="{{ url_for('static', filename='logo.png') }}" alt="Logo">
-    <h1>Nombre de la Empresa</h1>
+    <h1>AMARIFRAH</h1>
 </div>
 
 <div class="container mt-4">
@@ -59,7 +153,7 @@
 
 <!-- Footer -->
 <footer>
-    © {{ current_year or 2026 }} Nombre de la Empresa. Todos los derechos reservados.
+    © {{ current_year or 2026 }} AMARIFRAH. Todos los derechos reservados.
 </footer>
 
 </body>
