@@ -529,11 +529,11 @@ app = Flask(__name__)
 app.secret_key = "CLAVE_SUPER_SECRETA"  # Cámbiala
 # URL de PostgreSQL desde Render o tu entorno
 def conectar_db():
-    DATABASE_URL1 = os.environ.get("postgresql://asistencia_user:Y2AGMrNqjYkbpbWQTy59L7ipN5VJRRuR@dpg-d5g0m095pdvs73cbllcg-a/asistencia_09j8")
-    DATABASE_URL = os.environ.get(DATABASE_URL1)
+    DATABASE_URL = os.environ.get("DATABASE_URL")  # nombre de la variable como string
     if not DATABASE_URL:
         raise Exception("❌ La variable de entorno DATABASE_URL no está definida")
-    return psycopg2.connect(DATABASE_URL, cursor_factory=RealDictCursor)
+    return psycopg2.connect(DATABASE_URL)
+
 
 # =========================
 # CONEXIÓN BD
